@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ITC 111 Assignments Portal Page</title>
+    <style>
+        div{
+            margin:0px auto;
+            width: 50%;
+        }
+        p{
+            margin:0px;
+        }
+        .center{
+            margin-top: 10%;
+            height:50px;
+            text-align: center;
+        }
+        header, nav, footer{
+            background-color: lightgreen;
+            text-align: center;
+        }
+        main {
+            margin:auto;
+            height:260px;
+            background-color:lightgreen;
+            overflow:hidden;
+        }
+        nav, footer{
+            background-color: rgb(125, 250, 125);
+            color:black;
+        }
+        section.left{
+            text-align: center;
+            height: 260px;
+            background-color:lightgreen;
+            float:left;
+            width:200px;
+        }
+        ul{
+            margin-left: -40px;
+            list-style-type:none;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <!--Header Start-->
+        <header>
+            <!--Banner Start-->
+            <h1>ITC 111 Assignments Portal Page</h1>
+            <!--Banner End-->
+            <!--Nav Bar Start-->
+            <nav>
+                <a href="#" title = "Class Assignments">Home</a> &nbsp;|&nbsp;
+                <a href="https://github.com/bertchen2015" title="GitHub">GitHub</a> &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/alberthchen15/" title = "LinkedIn">LinkedIn</a> &nbsp;|&nbsp;
+                <a href = "https://canvas.seattlecentral.edu/courses/1903178/users/5591113" title="Canvas">Canvas</a>
+            </nav>
+            <!--Nav Bar End-->
+        </header>
+        <!--Header End-->
+        <main>
+            <!--Link Section Start-->
+            <section class = "left"><br>
+            <p>Assignments</p>
+            <hr>
+            <ul>
+                <li>
+                    <a href = "https://github.com/bertchen2015/ITC-111/blob/master/classEx02a.html" title = "Class EX.01 Link">Class Ex.01</a>
+                </li>
+                <li>
+                    <a href="https://github.com/bertchen2015/ITC-111/blob/master/classEx02a.html" title = "Class Ex.02A Link">Class Ex.02A</a>
+                </li>
+                <li>
+                    <a href = "https://github.com/bertchen2015/ITC-111/blob/master/signin.html" title = "Class Ex.02B Link">Class Ex.02B</a>
+                </li>
+                <li>
+                    <a href = "https://github.com/bertchen2015/ITC-111/tree/master/ClassEx2" title = "Class Ex.02C Link">Class Ex.02C</a>
+                </li>
+                <li>
+                    <a href = "https://github.com/bertchen2015/ITC-111/blob/master/classEx03.html" title = "Class EX.03 Link">Class EX.03</a>
+                </li>
+            </ul>
+        </section>
+        <!--Link Section End-->
+        <!--Side Bar Start-->
+        <section class = "center">
+            <p id = "linkDetail"><p style= "font-size: 30px">This is my assignments page. Check out my previously submitted assignments above!</p></p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style ="text-align: left">Feel free to check out my resouces above as well</p>
+
+        </section>
+        <!--Side Bar End-->
+        </main>
+        <footer>
+            <p>Copyright&copy;ITC-111</p>
+        </footer>
+    </div>
+</body>
+</html>
