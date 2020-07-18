@@ -1,0 +1,33 @@
+<script>
+function validation(){
+    var x, text;
+    x = document.getElementById("userInput").value;
+
+    if (isNaN (x)){ 
+        text = "Please enter a number";
+    }
+    else if (x < 21){
+        text = "Nice try kiddo, no alcohol for you";
+    }
+    else {
+        text = "Time to crack open some cold ones with the gang"
+    }
+
+    document.getElementById("test").innerHTML = text;
+}
+
+
+</script>
+
+
+<body>
+    <h1>Are you old enough to drink?</h1>
+    <h3>Enter your age: </h3>
+
+    <input id = "userInput">
+    <button type = "button" onclick = "validation()">Submit</button>
+    <p id = "test"></p>
+
+    
+
+</body>
