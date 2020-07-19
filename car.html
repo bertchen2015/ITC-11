@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Swag kids car dealership</h1>
+<h4>Check out our cars!</h4>
+
+<p> Type 1 to see our Ford cars</p>
+<p> Type 2 to see our Honda cars</p>
+<p> Type 3 to see our Toyota cars</p>
+
+<input id = "userInput">
+<button type = "button" onclick = "menu()">Submit</button>
+
+<p id = "test"></p>
+
+<br>
+<br>
+<br>
+
+<input id = "buyInput">
+<button type = "button" onclick = "buy()">Buy</button>
+<p id = "buyTest"></p>
+<p id = "final"></p>
+
+
+
+
+    </body>
+
+<script>
+ var x, userColor, outpu;
+class Car {
+    constructor(make, color) {
+        this.make = make;
+        this.color = color;
+    }
+}
+class carModel extends Car {
+    constructor(make, color, model) {
+        super(make, color);
+        this.model = model;
+    }
+    finalProd(color, model, make) {
+        return "Congrats! You bought a " + color + " " + make + " " + model;
+    }
+    get get_make() {
+        return this.make;
+    }
+    get get_model() {
+        return this.model;
+    }
+    get get_color() {
+        return this.color;
+    }
+    set set_make(car_make) {
+        this.make = car_make;
+        return this.make;
+    }
+    set set_model(car_model) {
+        this.model = car_model;
+        return this.model;
+    }
+    set set_color(car_color) {
+        this.color = car_color;
+        return this.color;
+    }
+}
+let finalCar = new carModel("", "", "");
+
+function menu() {
+    
+    var text, buyText;
+    x = document.getElementById("userInput").value;
+  //  userColor = "undefined";
+    if (x == 1) {
+        text = "We have one Ford truck";
+        buyText = "Enter the color you want your Ford Truck to be and click Buy";
+    //    if (userColor != "undefined") {
+      //      buy(make = "Ford", model = "Truck", color = userColor);
+    } else if (x == 2) {
+        text = "We have one Honda Civic";
+        buyText = "Enter the color you want your Honda Civic to be and click Buy";
+    } else if (x == 3) {
+        text = "We have one Toyota Camry";
+        buyText = "Enter the color you want your Toyota Camery to be and click Buy";
+    } else {
+        text = "Bro try again";
+        buyText = "Please enter a 1, 2, or 3.";
+    }
+    document.getElementById("test").innerHTML = text;
+    document.getElementById("buyTest").innerHTML = buyText;
+    
+}
+
+function buy() {
+    userColor = document.getElementById("buyInput").value;
+
+    while(userColor != ""){
+    if (x == 1) {
+        myUserCar = new carModel("Ford", userColor, "Truck");
+    } else if (x == 2) {
+        myUserCar = new carModel("Honda", userColor, "Civic");
+    } else if (x == 3) {
+        myUserCar = new carModel("Toyota", userColor, "Camry");
+    }
+    finalCar.set_color = myUserCar.get_color;
+    finalCar.set_model = myUserCar.get_model;
+    finalCar.set_make = myUserCar.get_make;
+    output = finalCar.finalProd(finalCar.get_color, finalCar.get_model, finalCar.get_make);
+    document.getElementById("final").innerHTML = output
+    console.log(finalCar.finalProd());
+    return finalCar;
+    }
+}
+</script>
+
+</html>
