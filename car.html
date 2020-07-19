@@ -28,20 +28,21 @@
     </body>
 
 <script>
- var x, userColor, outpu;
+ var x, userColor, output;
 class Car {
-    constructor(make, color) {
+    constructor(make, color,price) {
         this.make = make;
         this.color = color;
+        this.price = price;
     }
 }
 class carModel extends Car {
-    constructor(make, color, model) {
-        super(make, color);
+    constructor(make, color, price, model) {
+        super(make, color, price);
         this.model = model;
     }
-    finalProd(color, model, make) {
-        return "Congrats! You bought a " + color + " " + make + " " + model;
+    finalProd(color, make, price, model) {
+        return "Congrats! You bought a " + color + " " + make + " " + model + " for $" + price + ". After tax your total will be " ;
     }
     get get_make() {
         return this.make;
@@ -51,6 +52,10 @@ class carModel extends Car {
     }
     get get_color() {
         return this.color;
+    }
+
+    get get_price() {
+        return this.price;
     }
     set set_make(car_make) {
         this.make = car_make;
@@ -64,8 +69,16 @@ class carModel extends Car {
         this.color = car_color;
         return this.color;
     }
+
+    set set_price(car_price){
+        this.price = car_price;
+        return this.price;
+    }
+
+
+
 }
-let finalCar = new carModel("", "", "");
+let finalCar = new carModel("", "", "", "");
 
 function menu() {
     
@@ -75,8 +88,6 @@ function menu() {
     if (x == 1) {
         text = "We have one Ford truck";
         buyText = "Enter the color you want your Ford Truck to be and click Buy";
-    //    if (userColor != "undefined") {
-      //      buy(make = "Ford", model = "Truck", color = userColor);
     } else if (x == 2) {
         text = "We have one Honda Civic";
         buyText = "Enter the color you want your Honda Civic to be and click Buy";
@@ -84,7 +95,7 @@ function menu() {
         text = "We have one Toyota Camry";
         buyText = "Enter the color you want your Toyota Camery to be and click Buy";
     } else {
-        text = "Bro try again";
+        text = "Please try again";
         buyText = "Please enter a 1, 2, or 3.";
     }
     document.getElementById("test").innerHTML = text;
@@ -97,18 +108,19 @@ function buy() {
 
     while(userColor != ""){
     if (x == 1) {
-        myUserCar = new carModel("Ford", userColor, "Truck");
+        myUserCar = new carModel("Ford", userColor, "Truck", 36000);
     } else if (x == 2) {
-        myUserCar = new carModel("Honda", userColor, "Civic");
+        myUserCar = new carModel("Honda", userColor, "Civic", 20000);
     } else if (x == 3) {
-        myUserCar = new carModel("Toyota", userColor, "Camry");
+        myUserCar = new carModel("Toyota", userColor, "Camry", 24000);
     }
     finalCar.set_color = myUserCar.get_color;
     finalCar.set_model = myUserCar.get_model;
     finalCar.set_make = myUserCar.get_make;
-    output = finalCar.finalProd(finalCar.get_color, finalCar.get_model, finalCar.get_make);
+    finalCar.set_price = myUserCar.get_price;
+
+    output = finalCar.finalProd(finalCar.get_color, finalCar.make, finalCar.get_model, finalCar.get_price);
     document.getElementById("final").innerHTML = output
-    console.log(finalCar.finalProd());
     return finalCar;
     }
 }
