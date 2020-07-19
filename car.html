@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <title>Breann, Albert, Alan Group project 2</title>
+        <style>
+            body {
+                background-color: blanchedalmond;
+                text-align: center;
+                margin-top: 5%;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            input {
+                background-color: azure;
+            }
+            button {
+                background-color: azure;
+            }
+        </style>
+    </head>
+
     <body>
         <h1>Swag kids car dealership</h1>
-<h4>Check out our cars!</h4>
+        <h3>Check out our cars!</h3>
 
-<p> Type 1 to see our Ford cars</p>
-<p> Type 2 to see our Honda cars</p>
-<p> Type 3 to see our Toyota cars</p>
+        <p> Type 1 to see our Ford cars</p>
+        <p> Type 2 to see our Honda cars</p>
+        <p> Type 3 to see our Toyota cars</p>
 
-<input id = "userInput">
-<button type = "button" onclick = "menu()">Submit</button>
+        <input id = "userInput">
+        <button type = "button" onclick = "menu()">Submit</button>
 
-<p id = "test"></p>
+        <p id = "test"></p>
 
-<br>
-<br>
-<br>
+        <br>
 
-<input id = "buyInput">
-<button type = "button" onclick = "buy()">Buy</button>
-<p id = "buyTest"></p>
-<p id = "final"></p>
-
-
-
-
+        <input id = "buyInput">
+        <button type = "button" onclick = "buy()">Buy</button>
+        <p id = "buyTest"></p>
+        <p id = "final"></p>
     </body>
 
 <script>
- var x, userColor, output;
+ var x, userColor, output, newPrice;
 class Car {
     constructor(make, color,price) {
         this.make = make;
@@ -37,12 +49,12 @@ class Car {
     }
 }
 class carModel extends Car {
-    constructor(make, color, price, model) {
+    constructor(make, color, model, price) {
         super(make, color, price);
         this.model = model;
     }
-    finalProd(color, make, price, model) {
-        return "Congrats! You bought a " + color + " " + make + " " + model + " for $" + price + ". After tax your total will be " ;
+    finalProd(make, color, model, price, total) {
+        return "Congrats! You bought a " + color + " " + make + " " + model + " for $" + price + ". After tax your total will be $" + total ;
     }
     get get_make() {
         return this.make;
@@ -61,6 +73,12 @@ class carModel extends Car {
         this.make = car_make;
         return this.make;
     }
+
+    set newPrice(num){
+        this.price = num;
+    }
+
+
     set set_model(car_model) {
         this.model = car_model;
         return this.model;
@@ -75,10 +93,13 @@ class carModel extends Car {
         return this.price;
     }
 
-
+    get tax(){
+        return 1.13 * this.price;
+    }
 
 }
 let finalCar = new carModel("", "", "", "");
+
 
 function menu() {
     
@@ -103,6 +124,7 @@ function menu() {
     
 }
 
+
 function buy() {
     userColor = document.getElementById("buyInput").value;
 
@@ -119,11 +141,30 @@ function buy() {
     finalCar.set_make = myUserCar.get_make;
     finalCar.set_price = myUserCar.get_price;
 
-    output = finalCar.finalProd(finalCar.get_color, finalCar.make, finalCar.get_model, finalCar.get_price);
+    console.log(myUserCar.get_price);
+    console.log(myUserCar.get_model);
+    console.log(myUserCar.get_make);
+
+    finalCar.newPrice = myUserCar.get_price;
+
+
+
+    const total = Math.round(finalCar.tax);
+    console.log(total);
+
+
+
+    output = finalCar.finalProd(finalCar.get_make, finalCar.color, finalCar.get_model, finalCar.get_price, total);
+    
+    
     document.getElementById("final").innerHTML = output
     return finalCar;
     }
 }
+
+
+
+
 </script>
 
 </html>
