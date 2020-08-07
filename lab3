@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<style>
+	body {
+            background-color: grey;
+            margin-right: 30%;
+            margin-left: 30%;
+            margin-top: 2%;
+            font-size: 20px;
+            text-align: center;
+        }
+        label {
+            color: black;
+        }
+        .hai {
+            font-family: "Courier New", Courier, monospace;
+        }
+        button {
+            outline: 0;
+            margin:0 4px 0 0;
+            padding: .4em 1em;
+            text-decoration:none !important;
+            cursor:pointer;
+            position: relative;
+            text-align: center;
+            zoom: 1;
+        }
+        input[type = password] {
+            box-sizing: border-box;
+            background-color: whitesmoke;
+        }
+
+	div {
+		text-align: center;
+border: 1px solid blue;
+width: 200px;
+height: 100px;
+overflow: scroll;
+	}
+</style>
+
+<body>
+	<p>Hello David!</p>
+	<p>Take a look at our super cool events!</p>
+	<p>The two events we added was a toggle event and a scroll event! Pretty rad right?</p>
+	<!--
+	define 2 so-called "Generic Button GUI Controls"
+	-->
+	<button id="addEventListnersBtn">Add Style Content Button</button>
+	<button id="removeEventListnersBtn">Remove Style Paragraph Contents button</button>
+	<br>
+	<br>
+	<button id="styleParagraphButton">Style the Paragraph Contents!</button>
+	<!--
+	THESE ARE THE 2 BUTTONS I WANT YOU TO REPLACE WITH YOUR
+	CHOICE OF GUI CONTROLS
+	e.g TextBox?, RadioButton? etc...
+	-->
+	<br>
+	<br>
+	<p>Toggle the button to show password visability!</p>Password:
+	<input type="password" value="Password123" id="myInput">
+	<br>
+	<br>
+	<input type="checkbox" onclick="revealFunction()">Show Password
+	<br>
+	<br>
+	<p>Scroll the sidebar to see something cool!</p>
+	<div onScroll="scrollFunction()">Somebody once told me the world is gonna roll me I ain't the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead Well, the years start coming and they don't stop coming Fed to the rules and I hit the ground running Didn't make sense not to live for fun Your brain gets smart but your head gets dumb So much to do, so much to see So what's wrong with taking the back streets? You'll never know if you don't go You'll never shine if you don't glow Hey, now, you're an all-star, get your game on, go play Hey, now, you're a rock star, get the show on, get paid And all that glitters is gold Only shooting stars break the mold It's a cool place and they say it gets colder You're bundled up now wait 'til you get older But the meteor men beg to differ Judging by the hole in the satellite picture The ice we skate is getting pretty thin The water's getting warm so you might as well swim My world's on fire. How about yours? That's the way I like it and I'll never get bored Hey, now, you're an all-star, get your game on, go play Hey, now, you're a rock star, get the show on, get paid And all that glitters is gold Only shooting stars break the mold Go for the moon Go for the moon Go for the moon Go for the moon Hey, now, you're an all-star, get your game on, go play Hey, now, you're a rock star, get the show on, get paid And all that glitters is gold Only shooting stars Somebody once asked could I spare some change for gas I need to get myself away from this place I said yep, what a concept I could use a little fuel myself And we could all use a little change Well, the years start coming and they don't stop coming Fed to the rules and I hit the ground running Didn't make sense not to live for fun Your brain gets smart but your head gets dumb So much to do, so much to see So what's wrong with taking the back streets? You'll never know if you don't go You'll never shine if you don't glow Hey, now, you're an all star, get your game on, go play Hey, now, you're a rock star, get the show on, get paid And all that glitters is gold Only shooting stars break the mold And all that glitters is gold Only shooting stars break the mold</div>
+	<p>You've scrolled <span id="count">0</span> times! Its a good song isn't it?</p>
+	<script>
+		document.getElementById("addEventListnersBtn").addEventListener("click", addEventListnerEH);
+
+		document.getElementById("removeEventListnersBtn").addEventListener("click", removeEventListnerEH);
+
+		document.getElementById("styleParagraphButton").addEventListener("click", styleParagraphsEH);
+		
+		//disable the disable event button because we can't disable what's not enabled
+		document.getElementById("removeEventListnersBtn").disabled = true;
+		document.getElementById("styleParagraphButton").disabled = true;
+		
+		
+		function revealFunction(){
+			var x = document.getElementById("myInput");
+			if(x.type === "password"){
+				x.type = "text";
+			}
+			else{
+				x.type = "password";
+			}
+		}
+
+
+		function styleParagraphsEH() 
+		{
+			var userChoice = prompt("Enter 1 for Traverse by DOM Collection or 2 for by NodeList");
+			userChoice = parseInt(userChoice);
+			
+			/*
+			CHANGE TO A SWITCH STATEMENT AND A WHILE LOOP
+			*/
+
+            switch(userChoice){
+                case 1:
+                var myCollection = document.getElementsByTagName("p");
+                var i = 0;
+                while(i < myCollection.length){
+                    myCollection[i].style.color = "red";
+                    i++
+                }
+                break;
+
+                case 2:
+                var myNodelist = document.querySelectorAll("p");
+                var i = 0;
+                while(i < myNodelist.length){
+                    myNodelist[i].style.color = "green";
+                    i++
+                }
+                break;
+            }
+						
+			
+		}		
+
+
+		function addEventListnerEH() 
+		{
+			
+			
+			//disable the add event button because we already have
+			//the event handlers set for the 2 Button GUI Controls
+			document.getElementById("addEventListnersBtn").disabled = true;
+			
+			//enable the disable event button because we can disable what's been enabled
+			document.getElementById("removeEventListnersBtn").disabled = false;
+
+			document.getElementById("styleParagraphButton").disabled = false;
+		}
+		
+		function addEventListnerEHnonButtonGC1() 
+		{
+			//show console log showing exceptions with console.log
+			console.log("nonButtonGC1: Click Event registered");
+		}
+		
+		function addEventListnerEHnonButtonGC2() 
+		{
+			//show console log showing exceptions with console.log
+			console.log("nonButtonGC2: Click Event registered");
+		}
+		
+		function removeEventListnerEH() 
+		{
+			
+			
+			//enable the add event button because the event handlers 
+			//are now not set for the 2 Button GUI Controls
+			document.getElementById("styleParagraphButton").disabled = true;
+			
+			//disable the disable event button for the event handlers for the
+			//2 Button GUI Controls since they are not set
+			document.getElementById("addEventListnersBtn").disabled = false;
+
+			document.getElementById("removeEventListnersBtn").disabled = true;
+		}
+
+var tempX = 0;
+function scrollFunction(){
+	document.getElementById("count").innerHTML = tempX += 1;
+}
+	</script>
+</body>
+
+</html>
