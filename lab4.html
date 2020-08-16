@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<div id="div1">
+<p id="pA">This is paragraph A.</p>
+<p id="pB">This is paragraph B.</p>
+<p id="pC">This is paragraph C.</p>
+</div>
+
+<script>
+    var container = document.getElementById("div1");
+
+    var paraE = document.createElement("p");
+    paraE.id = "pE";
+
+    var node = document.createTextNode("This is paragraph E.");
+    paraE.appendChild(node);
+    container.appendChild(paraE);
+
+    var paraD = document.createElement("p");
+    paraD.id = "pD";
+    var node = document.createTextNode("This is paragraph D.");
+    paraD.appendChild(node);
+
+    var childParaE = document.getElementById("pE");
+    container.insertBefore(paraD, childParaE);
+
+    var paraG = document.createElement("p");
+    paraG.id = "pG";
+    var node = document.createTextNode("This is paragraph G.");
+    paraG.appendChild(node);
+    container.appendChild(paraG);
+
+    var paraH = document.createElement("p");
+    paraH.id = "pH";
+    var node = document.createTextNode("This is paragraph H.");
+    paraH.appendChild(node);
+    container.appendChild(paraH);
+
+
+    var elementpG = document.getElementById("pG");
+    elementpG.remove();
+
+    var paraF = document.createElement("p");
+    paraF.id = "pF";
+    var node = document.createTextNode("This is paragraph F.");
+    paraF.appendChild(node);
+
+    var childParaH = document.getElementById("pH");
+    container.replaceChild(paraF, childParaH);
+
+
+
+
+
+
+</script>
