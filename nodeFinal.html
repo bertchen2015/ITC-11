@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h2>JavaScript HTML DOM!</h2>
+      
+      <p>Hello World!</p>
+      
+      <p>Hello Norway!</p>
+      
+      <p>Click the color button to change the color of all p elements.</p>
+      
+      <p>Click the font button to change the font of all header elements.</p>
+      
+      <p>Click the size button to change the size of all body elements.</p>
+      
+      <button onclick="colorFunction()">Try this Color Button</button> //created 3 buttons
+      
+      <button onclick="fontFunction()">Try this Font Function</button>
+      
+      <button onclick="sizeFunction()">Try this Size Button</button>
+      
+      <script>
+         function colorFunction() { //goes through nodelist and changes p tags to red
+           var myNodelist = document.querySelectorAll("p");
+           var i;
+           for (i = 0; i < myNodelist.length; i++) {
+             myNodelist[i].style.color = "red";
+           }
+         }
+         
+         function fontFunction(){ // same as above but the header tag to italicize 
+         	var myNodelist = document.querySelectorAll("h2");
+             var i;
+             for(i = 0; i < myNodelist.length; i++){
+             myNodelist[i].style.font = "italic bold 20px arial,serif";
+         }
+         }
+         
+         function sizeFunction(){ //body tag to Large font size
+         var myNodelist = document.querySelectorAll("body");
+             var i;
+             for(i = 0; i < myNodelist.length; i++){
+             myNodelist[i].style.fontSize = "xx-Large";
+             }
+             }
+             
+      </script>
+   </body>
+</html>
