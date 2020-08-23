@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background: lightblue;
+                margin: auto;
+                width: 50%;
+                border: 3px solid white;
+                padding: 20px;
+                text-align: center;
+            }
+            /* Designing the User Input */
+            p {
+				font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+				font-kerning: normal;
+            }
+            input[type=text] {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid grey;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            /* Design data table */
+            table, td, th:nth-child(even) {
+                border: 4px solid black;
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                background-color: #f2f2f2;
+                border: 1px solid black;
+            }
+            /* Keeps information centered */
+            #demo1 {
+                margin: auto;
+                width: 25%;
+                text-align: center;
+                padding: 10px;
+            }
+            /* Submit Button style */
+            .submit {
+                background-color: black; 
+                border: none;
+                color: white;
+                padding: 8px 20px;
+                text-align: center;
+                border-radius: 12px;
+            }
+            .submit:hover {
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+        </style>
+    </head>
+	<body>
+
+		<h1>Describe Yourself</h1>
+		<h3>Describe yourself by filling in the data below!</h3>
+
+
+		<p>Enter your birthday:</p>
+
+		<form id="form" onsubmit="return false;">
+			<input type="date" id="birthday" name="bday" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+			<br>
+
+			<p>Enter your Name:</p>
+			<input type="text" id="userName" placeholder="Enter your First name..."/>
+			<br>
+
+			<p>Enter your birthplace:</p>
+			<input type="text" id="birthplace" placeholder="Enter your birth place..."/>
+
+			<p>Enter your most liked nickname:</p>
+			<input type="text" id="likenickname" placeholder="Enter Nickname..."/>
+
+			<p>Enter your most disliked nickname:</p>
+			<input type="text" id="dislikenickname" placeholder="Enter Most disliked Nickname..."/>
+			<br>
+			<br>
+
+			<input class="submit" type="submit" onclick="tableCreate();" />
+			<p id="demo1"></p>
+			<p id = "description"></p>
+        </form>
+		
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" > </script>
+
+	<script >
+	//NOTE:
+	//Even though we can imagine Steps 1 through 5 listed below
+	//could play out between a Client and Server on different machine,
+	//we will program it in one Web App
+	//In true Client/Server application:
+	//Client would do: Steps 1, 2, 3
+	//Server would do: Steps 4, 5
+
+	//Step 1: get the user input 
+	//NOTE: CHANGE on 8/10; to be clear ..
+	//let's make sure we get the values from the end-user
+	//So we could make some textboxes for these inputs?
+
+	function tableCreate() {
+
+		var nameVal = document.getElementById("userName").value;
+		var birthVal = document.getElementById("birthday").value;
+		var cityVal = document.getElementById("birthplace").value;
+		var nickNameVal1 = document.getElementById("likenickname").value;
+		var nickNameVal2 = document.getElementById("dislikenickname").value;
+
+		//Step 2: format the user input
+		var studentDataObj = {
+			name: nameVal,
+			birth: birthVal,
+			city: cityVal,
+			nicknames: [nickNameVal1, nickNameVal2]
+		};
+
+		//Step 3: Create a JSON Object for the user input
+		var clientDataJSONObj = JSON.stringify(studentDataObj);
+
+		//Step 4: parse out an Object from he JSON Object
+		var clientDataObj = JSON.parse(clientDataJSONObj);
+
+		//Step 5: create a table to display the Object Data
+		txt = "<table border='1'>"
+		for (x in clientDataObj) {
+			txt += "<tr><td>" + x + "</td>" + "<td>" + clientDataObj[x] + "</td></tr>";
+		}
+		txt += "</table>"
+		document.getElementById("demo1").innerHTML = txt;
+
+		output = "Are you ready to see some JQuery magic? Click the box above!"
+		document.getElementById("description").innerHTML = output
+		$(document).ready(function(){
+			$("table").click(function(){
+				$(this).hide();
+			});
+		});
+	}
+	</script>
+	</body>
+</html>
